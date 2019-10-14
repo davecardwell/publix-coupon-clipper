@@ -1,6 +1,6 @@
 # publix-coupon-clipper
 
-[![Build Status](https://travis-ci.org/davecardwell/publix-coupon-clipper.svg?branch=master)](https://github.com/davecardwell/publix-coupon-clipper/workflows/Release/badge.svg)
+[![Build Status](https://github.com/davecardwell/publix-coupon-clipper/workflows/Release/badge.svg)](https://github.com/davecardwell/publix-coupon-clipper/actions?workflow=Release)
 [![npm latest version](https://img.shields.io/npm/v/publix-coupon-clipper/latest.svg)](https://www.npmjs.com/package/publix-coupon-clipper)
 
 [Publix](https://www.publix.com/) is a grocery chain that operates throughout the Southeastern United States. This script uses [Puppeteer](https://developers.google.com/web/tools/puppeteer/) to automatically clip [digital coupons](https://www.publix.com/savings/coupons/digital-coupons) which can then be applied to your purchases in store if you provide your phone number at checkout.
