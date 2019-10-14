@@ -1,6 +1,6 @@
 {
   "name": "publix-coupon-clipper",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Automatically clip Publix digital coupons",
   "homepage": "https://github.com/davecardwell/publix-coupon-clipper#readme",
   "author": {
