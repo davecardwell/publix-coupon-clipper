@@ -1,0 +1,13 @@
+{
+  "cSpell.ignoreWords": [
+    "azureedge",
+    "couponid",
+    "framenavigated",
+    "tsbuildinfo",
+    "prebuild",
+    "prewatch"
+  ],
+  "eslint.options": {
+    "ignorePath": ".gitignore"
+  }
+}

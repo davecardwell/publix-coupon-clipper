@@ -1,0 +1,90 @@
+{
+  "name": "publix-coupon-clipper",
+  "version": "0.0.0-development",
+  "description": "Automatically clip Publix digital coupons",
+  "homepage": "https://github.com/davecardwell/publix-coupon-clipper#readme",
+  "author": {
+    "name": "Dave Cardwell",
+    "url": "https://www.davecardwell.com/"
+  },
+  "license": "GPL-3.0",
+  "main": "dist/index.node.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=6.4.0"
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "clean": "rimraf dist/ tsconfig.tsbuildinfo",
+    "prebuild": "npm run clean",
+    "build": "npm run build:module && npm run build:node",
+    "build:module": "tsc",
+    "build:node": "rollup --config rollup.config.js",
+    "prewatch": "npm run clean",
+    "watch": "nodemon --config nodemon.json --exec concurrently --kill-others --names module,node 'npm run watch:module' 'npm run watch:node'",
+    "watch:module": "npm run build:module -- --watch",
+    "watch:node": "wait-on dist/index.js && npm run build:node -- --watch",
+    "pretest": "eslint --ignore-path .gitignore --max-warnings 0 --ext js,ts .",
+    "test": "exit 0",
+    "release": "npx --no-install semantic-release"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --ignore-path .gitignore --max-warnings 0"
+    ],
+    "!(*.{js,ts})": [
+      "prettier --check"
+    ]
+  },
+  "dependencies": {
+    "@types/puppeteer": "^1.20.2",
+    "inquirer": "^7.0.0",
+    "puppeteer": "^1.20.0",
+    "typed-emitter": "^0.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
+    "@types/inquirer": "^6.5.0",
+    "@typescript-eslint/eslint-plugin": "^2.3.3",
+    "@typescript-eslint/parser": "^2.3.3",
+    "concurrently": "^5.0.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "nodemon": "^1.19.3",
+    "prettier": "1.18.2",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.23.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "semantic-release": "^15.13.24",
+    "typescript": "^3.6.4",
+    "wait-on": "^3.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davecardwell/publix-coupon-clipper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davecardwell/publix-coupon-clipper/issues"
+  },
+  "keywords": [
+    "publix",
+    "groceries",
+    "coupons"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "watch": [
+    ".tool-versions",
+    "babel.config.js",
+    "nodemon.json",
+    "package.json",
+    "package-lock.json",
+    "rollup.config.js",
+    "tsconfig.json"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
