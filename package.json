@@ -9,6 +9,7 @@
   },
   "license": "GPL-3.0",
   "main": "dist/index.node.js",
+  "bin": "dist/index.node.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
