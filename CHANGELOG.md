@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/davecardwell/publix-coupon-clipper/compare/v1.0.1...v1.0.2) (2019-10-14)
+
+
+### Bug Fixes
+
+* add node shebang to allow for npx usage ([1391f49](https://github.com/davecardwell/publix-coupon-clipper/commit/1391f496fa3d6e2ff47a0a25150fdb2798f5d74a))
+
 ## [1.0.1](https://github.com/davecardwell/publix-coupon-clipper/compare/v1.0.0...v1.0.1) (2019-10-14)
 
 
