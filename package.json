@@ -74,6 +74,7 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "semantic-release": "^15.13.24",
+    "semver": "^6.3.0",
     "typescript": "^3.6.4",
     "wait-on": "^3.3.0"
   },
