@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/davecardwell/publix-coupon-clipper/compare/v1.0.2...v1.1.0) (2019-10-22)
+
+
+### Bug Fixes
+
+* **deps:** update https-proxy-agent to v2.2.3 ([1ce8292](https://github.com/davecardwell/publix-coupon-clipper/commit/1ce829249572265743a204da34de9ecb9239133d))
+
+
+### Features
+
+* **deps:** update typed-emitter to v0.2.0 ([2176478](https://github.com/davecardwell/publix-coupon-clipper/commit/2176478974bd79a5d1cf2c93b2c27c66954c4c48))
+
 ## [1.0.2](https://github.com/davecardwell/publix-coupon-clipper/compare/v1.0.1...v1.0.2) (2019-10-14)
 
 
