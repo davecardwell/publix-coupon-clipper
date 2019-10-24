@@ -1,3 +1,16 @@
+# [2.0.0](https://github.com/davecardwell/publix-coupon-clipper/compare/v1.1.0...v2.0.0) (2019-10-24)
+
+
+### Features
+
+* **deps:** update puppeteer to v2.0.0 ([10feb34](https://github.com/davecardwell/publix-coupon-clipper/commit/10feb34bedc2bbf0fcc087d2727457005e1c6686))
+
+
+### BREAKING CHANGES
+
+* **deps:** minimum Node.js version updated to v8.16.0
+Puppeteer dropped support for Node.js v6 so this library follows suit.
+
 # [1.1.0](https://github.com/davecardwell/publix-coupon-clipper/compare/v1.0.2...v1.1.0) (2019-10-22)
 
 
