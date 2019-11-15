@@ -59,7 +59,7 @@
     "@semantic-release/git": "^7.0.16",
     "@types/inquirer": "^6.5.0",
     "@typescript-eslint/eslint-plugin": "^2.5.0",
-    "@typescript-eslint/parser": "^2.5.0",
+    "@typescript-eslint/parser": "^2.7.0",
     "concurrently": "^5.0.0",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
