@@ -55,7 +55,7 @@ export const clipCoupons = async ({
   publixPassword: string;
   browser?: Browser;
 }): Promise<number> => {
-  const browser = browserArg || (await puppeteer.launch());
+  const browser = browserArg ?? (await puppeteer.launch());
 
   try {
     const page = await createPage(browser);
@@ -178,8 +178,9 @@ async function logInToPublix(
         .waitForSelector("#error", { visible: true })
         .then(
           async (elementHandle): Promise<void> => {
-            const formError = await elementHandle.evaluate((element): string =>
-              (element.textContent || "").trim(),
+            const formError = await elementHandle.evaluate(
+              (element): string =>
+                element.textContent?.trim() ?? "Unknown error",
             );
 
             await elementHandle.dispose();
@@ -302,14 +303,23 @@ async function getArgument(
   description: string,
   isSecret = false,
 ): Promise<string> {
-  if (process.argv.length > argvIndex) {
-    return process.argv[argvIndex];
-  }
+  return (
+    process.argv[argvIndex] ??
+    process.env[envKey] ??
+    (await getArgumentFromPrompt(description, isSecret))
+  );
+}
 
-  if (typeof process.env[envKey] !== "undefined") {
-    return process.env[envKey] as string;
-  }
-
+/**
+ * Prompt the user for a value.
+ *
+ * @param description The description to use.
+ * @param isSecret When true, don’t echo back user input (eg., for passwords).
+ */
+async function getArgumentFromPrompt(
+  description: string,
+  isSecret: boolean,
+): Promise<string> {
   const { argument } = await inquirer.prompt({
     type: isSecret ? "password" : "input",
     name: "argument",
