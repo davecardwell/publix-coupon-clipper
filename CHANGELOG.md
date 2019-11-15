@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/davecardwell/publix-coupon-clipper/compare/v2.0.0...v2.0.1) (2019-11-15)
+
+
+### Bug Fixes
+
+* **deps:** update @babel/core to v7.7.2 ([f8fcaf0](https://github.com/davecardwell/publix-coupon-clipper/commit/f8fcaf0e58a8464e87f86c851b4a31ac7fe0f999))
+
 # [2.0.0](https://github.com/davecardwell/publix-coupon-clipper/compare/v1.1.0...v2.0.0) (2019-10-24)
 
 
