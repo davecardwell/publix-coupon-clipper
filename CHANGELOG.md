@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/davecardwell/publix-coupon-clipper/compare/v2.0.1...v2.0.2) (2019-12-13)
+
+
+### Bug Fixes
+
+* **deps:** update @babel/plugin-proposal-nullish-coalescing-operator to v7.7.4 ([eaa1d22](https://github.com/davecardwell/publix-coupon-clipper/commit/eaa1d220fd65ab4b571b4baeb94a0643a7b1bf2b))
+
 ## [2.0.1](https://github.com/davecardwell/publix-coupon-clipper/compare/v2.0.0...v2.0.1) (2019-11-15)
 
 
