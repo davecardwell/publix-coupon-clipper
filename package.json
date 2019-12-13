@@ -47,7 +47,6 @@
     ]
   },
   "dependencies": {
-    "@types/puppeteer": "^1.20.2",
     "inquirer": "^7.0.0",
     "puppeteer": "^2.0.0",
     "typed-emitter": "^0.2.0"
@@ -60,6 +59,7 @@
     "@semantic-release/changelog": "^3.0.6",
     "@semantic-release/git": "^7.0.18",
     "@types/inquirer": "^6.5.0",
+    "@types/puppeteer": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "concurrently": "^5.0.0",
