@@ -1,3 +1,16 @@
+# [2.1.0](https://github.com/davecardwell/publix-coupon-clipper/compare/v2.0.2...v2.1.0) (2020-03-18)
+
+
+### Bug Fixes
+
+* **deps:** update inquirer to v7.1.0 ([dad6b3a](https://github.com/davecardwell/publix-coupon-clipper/commit/dad6b3aeaa1e63f5f10a6f47437ad99749e691dc))
+* **deps:** update rollup to v2.1.0 ([67117b5](https://github.com/davecardwell/publix-coupon-clipper/commit/67117b5dc646941997f49df9a9e8daf6961bb1f3))
+
+
+### Features
+
+* **deps:** update puppeteer to v2.1.1 ([d56ea7e](https://github.com/davecardwell/publix-coupon-clipper/commit/d56ea7e1a32df47c04ab99be583a8eb6ecb81139))
+
 ## [2.0.2](https://github.com/davecardwell/publix-coupon-clipper/compare/v2.0.1...v2.0.2) (2019-12-13)
 
 
