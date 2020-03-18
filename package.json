@@ -47,7 +47,7 @@
     ]
   },
   "dependencies": {
-    "inquirer": "^7.0.0",
+    "inquirer": "^7.1.0",
     "puppeteer": "^2.0.0",
     "typed-emitter": "^0.2.0"
   },
