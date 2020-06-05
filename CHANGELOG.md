@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/davecardwell/publix-coupon-clipper/compare/v2.1.1...v2.1.2) (2020-06-05)
+
+
+### Bug Fixes
+
+* ensure URL is imported for node.js < v10 ([#4](https://github.com/davecardwell/publix-coupon-clipper/issues/4)) ([6b990a6](https://github.com/davecardwell/publix-coupon-clipper/commit/6b990a69c65de1eb18c6f30edddb49825b85ff95))
+
 ## [2.1.1](https://github.com/davecardwell/publix-coupon-clipper/compare/v2.1.0...v2.1.1) (2020-03-23)
 
 
