@@ -2,6 +2,7 @@ import EventEmitter from "events";
 import type TypedEmitter from "typed-emitter";
 import inquirer from "inquirer";
 import puppeteer, { Browser, Request, Page } from "puppeteer";
+import { URL } from "url"; // not added to `global` until Node.js v10
 
 /**
  * If we’re being run directly and not imported as a package then call the

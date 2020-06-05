@@ -11,7 +11,7 @@ export default {
     format: "cjs",
     sourcemap: true,
   },
-  external: ["events", "inquirer", "puppeteer"],
+  external: ["events", "inquirer", "puppeteer", "url"],
   plugins: [sourcemaps(), babel(), addShebang({ include: outputFile })],
   watch: {
     clearScreen: false,
