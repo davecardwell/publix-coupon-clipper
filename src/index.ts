@@ -9,7 +9,7 @@ import { URL } from "url"; // not added to `global` until Node.js v10
  * `main()` function.
  */
 if (require.main === module) {
-  (async (): Promise<void> => {
+  void (async (): Promise<void> => {
     try {
       await main();
     } catch (err) {
@@ -94,7 +94,7 @@ async function createPage(browser: Browser): Promise<Page> {
 function filterRequests(request: Request): void {
   const url = new URL(request.url());
   if (!/(?:^|\.)publix\.com$/.test(url.hostname)) {
-    request.abort();
+    void request.abort();
     return;
   }
 
@@ -104,17 +104,17 @@ function filterRequests(request: Request): void {
         "info",
         `New document request: ${request.method()} ${request.url()}`,
       );
-      request.continue();
+      void request.continue();
       break;
 
     case "fetch":
     case "script":
     case "xhr":
-      request.continue();
+      void request.continue();
       break;
 
     default:
-      request.abort();
+      void request.abort();
   }
 }
 
@@ -321,7 +321,7 @@ async function getArgumentFromPrompt(
   description: string,
   isSecret: boolean,
 ): Promise<string> {
-  const { argument } = await inquirer.prompt({
+  const { argument } = await inquirer.prompt<{ argument: string }>({
     type: isSecret ? "password" : "input",
     name: "argument",
     message: description,
