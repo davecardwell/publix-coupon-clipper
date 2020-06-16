@@ -76,7 +76,7 @@
     "semantic-release": "^17.0.8",
     "semver": "^7.3.2",
     "typescript": "^3.8.3",
-    "wait-on": "^4.0.1"
+    "wait-on": "^5.0.1"
   },
   "repository": {
     "type": "git",
