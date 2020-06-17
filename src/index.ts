@@ -110,6 +110,7 @@ function filterRequests(request: Request): void {
       break;
 
     case "fetch":
+    case "other":
     case "script":
     case "xhr":
       void request.continue();
