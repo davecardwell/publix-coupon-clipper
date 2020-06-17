@@ -49,7 +49,7 @@
   "dependencies": {
     "inquirer": "^7.2.0",
     "puppeteer": "^2.1.1",
-    "typed-emitter": "^0.2.0"
+    "typed-emitter": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
