@@ -1,3 +1,21 @@
+# [3.0.0](https://github.com/davecardwell/publix-coupon-clipper/compare/v2.1.2...v3.0.0) (2020-06-17)
+
+
+### Bug Fixes
+
+* allow “other” type network requests ([29ca24c](https://github.com/davecardwell/publix-coupon-clipper/commit/29ca24c447c9a1e399d62ea522691146edae4e0f))
+
+
+### chore
+
+* **deps:** update puppeteer to v4.0.0 ([e9ed95f](https://github.com/davecardwell/publix-coupon-clipper/commit/e9ed95fb9665da0c86097e0dd647c5b3bf70eb9e))
+
+
+### BREAKING CHANGES
+
+* **deps:** puppeteer now requires Node.js >=10.18.1 so we update
+our minimum version to match.
+
 ## [2.1.2](https://github.com/davecardwell/publix-coupon-clipper/compare/v2.1.1...v2.1.2) (2020-06-05)
 
 
