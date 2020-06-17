@@ -19,6 +19,17 @@ npx publix-coupon-clipper [email] [password]
 
 If you do not provide your [Publix.com](https://www.publix.com/) email address and password the script will check the `PUBLIX_EMAIL` and `PUBLIX_PASSWORD` environment variables. If either of these are missing, you will be prompted for the value to use.
 
+<details>
+<summary>Using Your Local Chrome Installation</summary>
+
+When running `npx publix-coupon-clipper` the Puppeteer library will download Chromium each time (a >124Mb download as of writing).
+
+To avoid this you can set the `PUPPETEER_SKIP_CHROMIUM_DOWNLOAD` environment variable to `1` and `PUPPETEER_EXECUTABLE_PATH` to your existing Chrome install (eg. on macOS `'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'`).
+
+See the Puppeteer documentation on [environment variables](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#environment-variables) for more, but also note that they only [guarantee support](https://github.com/puppeteer/puppeteer/#q-why-doesnt-puppeteer-vxxx-work-with-chromium-vyyy) for their bundled Chromium version.
+
+</details>
+
 ## Package Usage
 
 `publix-coupon-clipper` can also installed from [NPM](https://www.npmjs.com/package/publix-coupon-clipper) and used in your own Node.js script.
@@ -64,7 +75,7 @@ An `EventEmitter` called `events` is also exported which provides `info` message
 const { clipCoupons, events } = require("publix-coupon-clipper");
 
 (async () => {
-  events.on("info", message => console.log(new Date(), message));
+  events.on("info", (message) => console.log(new Date(), message));
 
   await clipCoupons({
     publixEmail: "foobar@example.com",
