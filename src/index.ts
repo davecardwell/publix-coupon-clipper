@@ -1,7 +1,7 @@
 import type { Browser, Request, Page } from "puppeteer";
 import type TypedEmitter from "typed-emitter";
 
-import EventEmitter from "events";
+import { EventEmitter } from "events";
 import inquirer from "inquirer";
 import puppeteer from "puppeteer";
 
