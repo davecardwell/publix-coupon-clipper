@@ -14,7 +14,7 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "engines": {
-    "node": ">=8.16.0"
+    "node": ">=10.18.1"
   },
   "files": [
     "dist/"
@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "inquirer": "^7.2.0",
-    "puppeteer": "^2.1.1",
+    "puppeteer": "^4.0.0",
     "typed-emitter": "^1.2.0"
   },
   "devDependencies": {
