@@ -1,10 +1,10 @@
-import addShebang from "rollup-plugin-add-shebang";
-import babel from "rollup-plugin-babel";
-import sourcemaps from "rollup-plugin-sourcemaps";
+const addShebang = require("rollup-plugin-add-shebang");
+const babel = require("rollup-plugin-babel");
+const sourcemaps = require("rollup-plugin-sourcemaps");
 
 const outputFile = "dist/index.node.js";
 
-export default {
+module.exports = {
   input: "dist/index.js",
   output: {
     file: outputFile,

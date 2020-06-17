@@ -2,12 +2,12 @@
   "root": true,
 
   "parserOptions": {
-    "ecmaVersion": 10,
     "sourceType": "module"
   },
 
   "env": {
     "browser": false,
+    "es2017": true,
     "node": true
   },
 
@@ -19,8 +19,15 @@
 
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
-        "project": "tsconfig.json"
+        "project": "tsconfig.json",
+        "sourceType": "module"
       },
+      "env": {
+        "browser": false,
+        "es2020": true,
+        "node": true
+      },
+
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
