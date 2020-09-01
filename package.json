@@ -73,7 +73,7 @@
     "rollup-plugin-add-shebang": "^0.3.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-sourcemaps": "^0.6.2",
-    "semantic-release": "^17.0.8",
+    "semantic-release": "^17.1.1",
     "semver": "^7.3.2",
     "typescript": "^3.9.5",
     "wait-on": "^5.0.1"
