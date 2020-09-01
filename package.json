@@ -47,7 +47,7 @@
     ]
   },
   "dependencies": {
-    "inquirer": "^7.2.0",
+    "inquirer": "^7.3.3",
     "puppeteer": "^4.0.0",
     "typed-emitter": "^1.2.0"
   },
@@ -56,7 +56,7 @@
     "@babel/preset-env": "^7.11.5",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
-    "@types/inquirer": "^6.5.0",
+    "@types/inquirer": "^7.3.1",
     "@types/puppeteer": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^3.3.0",
     "@typescript-eslint/parser": "^3.3.0",
