@@ -39,11 +39,11 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts}": [
+    "**/*.{js,ts}": [
       "eslint --ignore-path .gitignore --max-warnings 0"
     ],
-    "!(*.{js,ts})": [
-      "prettier --check"
+    "**/!(*.{js,ts})": [
+      "prettier --check --ignore-unknown"
     ]
   },
   "dependencies": {
