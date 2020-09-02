@@ -216,10 +216,15 @@ async function processCoupons(page: Page): Promise<number> {
   events.emit("info", "Clipping coupons");
 
   // Click the “Show all” button and wait for them to appear
-  await page.waitForSelector(".show-all-link button", { visible: true });
-  await page.click(".show-all-link button");
+  const showAllButtonXPath =
+    "//div[contains(@class, 'card-loader')]//button[contains(., 'Show all')]";
+  const showAllButton = await page.waitForXPath(showAllButtonXPath, {
+    visible: true,
+  });
+  await showAllButton.click();
+  await showAllButton.dispose();
   await Promise.all([
-    page.waitForSelector(".show-all-link button", { hidden: true }),
+    page.waitForXPath(showAllButtonXPath, { hidden: true }),
     page.waitForSelector(".card.savings .buttons-area button", {
       visible: true,
     }),
