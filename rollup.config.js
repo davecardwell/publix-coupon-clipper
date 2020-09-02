@@ -9,6 +9,7 @@ module.exports = {
   output: {
     file: outputFile,
     format: "cjs",
+    interop: "auto",
     sourcemap: true,
   },
   external: ["events", "inquirer", "puppeteer", "url"],
