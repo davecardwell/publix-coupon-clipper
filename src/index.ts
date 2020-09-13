@@ -108,11 +108,17 @@ function filterRequests(request: Request): void {
       void request.continue();
       break;
 
-    case "fetch":
     case "other":
     case "script":
-    case "xhr":
       void request.continue();
+      break;
+
+    case "fetch":
+    case "xhr":
+      // Only need to make API requests
+      url.hostname === "services.publix.com"
+        ? void request.continue()
+        : void request.abort();
       break;
 
     default:
