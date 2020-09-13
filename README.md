@@ -38,7 +38,7 @@ See the Puppeteer documentation on [environment variables](https://github.com/pu
 
 ## Package Usage
 
-`publix-coupon-clipper` can also installed from [NPM](https://www.npmjs.com/package/publix-coupon-clipper) and used in your own Node.js script.
+`publix-coupon-clipper` can also be installed from [NPM](https://www.npmjs.com/package/publix-coupon-clipper) and used in your own Node.js script.
 
 ```javascript
 const { clipCoupons } = require("publix-coupon-clipper");
