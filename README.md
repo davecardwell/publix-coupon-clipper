@@ -20,11 +20,17 @@ npx publix-coupon-clipper [email] [password]
 If you do not provide your [Publix.com](https://www.publix.com/) email address and password the script will check the `PUBLIX_EMAIL` and `PUBLIX_PASSWORD` environment variables. If either of these are missing, you will be prompted for the value to use.
 
 <details>
-<summary>Using Your Local Chrome Installation</summary>
+<summary>Avoiding the Large Chromium Download</summary>
 
-When running `npx publix-coupon-clipper` the Puppeteer library will download Chromium each time (a >124Mb download as of writing).
+When running `npx publix-coupon-clipper` the Puppeteer library will download Chromium each time (a >130Mb download as of writing).
 
-To avoid this you can set the `PUPPETEER_SKIP_CHROMIUM_DOWNLOAD` environment variable to `1` and `PUPPETEER_EXECUTABLE_PATH` to your existing Chrome install (eg. on macOS `'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'`).
+To avoid this you can set the `PUPPETEER_DOWNLOAD_PATH` environment variable to reuse the same download each time. For example:
+
+```sh
+PUPPETEER_DOWNLOAD_PATH=/tmp/.publix-coupon-clipper-chromium npx publix-coupon-clipper
+```
+
+Alternatively you can set the `PUPPETEER_SKIP_CHROMIUM_DOWNLOAD` environment variable to `1` and `PUPPETEER_EXECUTABLE_PATH` to your existing Chrome install (eg. on macOS `'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'`).
 
 See the Puppeteer documentation on [environment variables](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#environment-variables) for more, but also note that they only [guarantee support](https://github.com/puppeteer/puppeteer/#q-why-doesnt-puppeteer-vxxx-work-with-chromium-vyyy) for their bundled Chromium version.
 
