@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.0.2...v3.1.0) (2020-09-13)
+
+
+### Features
+
+* **deps:** support PUPPETEER_DOWNLOAD_PATH ([82fc24a](https://github.com/davecardwell/publix-coupon-clipper/commit/82fc24a7dd3afc079454b754088256a9b6d7c22c))
+
 ## [3.0.2](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.0.1...v3.0.2) (2020-09-13)
 
 
