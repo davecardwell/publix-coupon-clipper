@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.0.1...v3.0.2) (2020-09-13)
+
+
+### Performance Improvements
+
+* only make necessary API requests ([88d148f](https://github.com/davecardwell/publix-coupon-clipper/commit/88d148f7095a77a7af2d274899655a326108b079))
+
 ## [3.0.1](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.0.0...v3.0.1) (2020-09-02)
 
 
