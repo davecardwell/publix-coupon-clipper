@@ -94,6 +94,12 @@ async function createPage(browser: Browser): Promise<Page> {
  */
 function filterRequests(request: Request): void {
   const url = new URL(request.url());
+
+  if (url.hostname === "cutpstorb2c.blob.core.windows.net") {
+    void request.continue();
+    return;
+  }
+
   if (!/(?:^|\.)publix\.com$/.test(url.hostname)) {
     void request.abort();
     return;
@@ -116,7 +122,9 @@ function filterRequests(request: Request): void {
     case "fetch":
     case "xhr":
       // Only need to make API requests
-      url.hostname === "services.publix.com"
+      url.hostname === "services.publix.com" ||
+      (url.hostname === "account.publix.com" &&
+        url.searchParams.get("p") === "B2C_1A_PublixSignInMigration_Signin")
         ? void request.continue()
         : void request.abort();
       break;
@@ -152,11 +160,15 @@ async function logInToPublix(
   }
 
   // Click the login button and wait to navigate to the SSO site
-  await Promise.all([page.waitForNavigation(), page.click("a.sign-in-button")]);
+  await Promise.all([
+    page.waitForNavigation(),
+    page.waitForSelector("#signInName", { visible: true }),
+    page.click("a.sign-in-button"),
+  ]);
 
   // Fill out the login form
-  await page.type("#tmpUserNameInput", publixEmail);
-  await page.type("#passwordInput", publixPassword);
+  await page.type("#signInName", publixEmail);
+  await page.type("#password", publixPassword);
 
   // Click submit and wait until either we’re navigated back to the coupon page
   // or a login form error is made visible.
@@ -184,7 +196,7 @@ async function logInToPublix(
       page.on("framenavigated", navigationListener);
 
       page
-        .waitForSelector("#error", { visible: true })
+        .waitForSelector(".error", { visible: true })
         .then(
           async (elementHandle): Promise<void> => {
             const formError = await elementHandle.evaluate(
@@ -207,7 +219,7 @@ async function logInToPublix(
         });
     }),
 
-    page.click("#submitButton"),
+    page.click("#next"),
   ]);
 
   events.emit("info", "Logged in successfully");
