@@ -259,7 +259,7 @@ async function processCoupons(page: Page): Promise<number> {
     errorCount = 0;
 
   for (let i = 0; i < couponCount; ++i) {
-    console.log(`Clipping coupon #${i + 1}`);
+    events.emit("info", `Clipping coupon #${i + 1}`);
 
     const buttonHandle = buttonHandles[i];
 
