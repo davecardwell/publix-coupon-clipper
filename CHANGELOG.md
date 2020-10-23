@@ -1,3 +1,11 @@
+## [3.1.1](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.1.0...v3.1.1) (2020-10-23)
+
+
+### Bug Fixes
+
+* emit “info” event upon coupon clipping ([96974e0](https://github.com/davecardwell/publix-coupon-clipper/commit/96974e0aed71ca61e4d4a9c1f500254ab2f2dc38))
+* update to work with new sign in process ([5b2a93d](https://github.com/davecardwell/publix-coupon-clipper/commit/5b2a93d1f7c9bba7ae40a2e6d778011e7db1f875))
+
 # [3.1.0](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.0.2...v3.1.0) (2020-09-13)
 
 
