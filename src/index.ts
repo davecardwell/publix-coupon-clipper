@@ -252,16 +252,15 @@ async function processCoupons(page: Page): Promise<number> {
     ".savings-container .card.savings .buttons-area button:not(.clipped)",
   );
 
-  const couponCount = buttonHandles.length;
-  events.emit("info", `Found ${couponCount} coupon(s) to clip`);
+  events.emit("info", `Found ${buttonHandles.length} coupon(s) to clip`);
 
-  let clippedCount = 0,
+  let couponCount = 0,
+    clippedCount = 0,
     errorCount = 0;
 
-  for (let i = 0; i < couponCount; ++i) {
-    events.emit("info", `Clipping coupon #${i + 1}`);
-
-    const buttonHandle = buttonHandles[i];
+  for (const buttonHandle of buttonHandles) {
+    ++couponCount;
+    events.emit("info", `Clipping coupon #${couponCount}`);
 
     await buttonHandle.click();
     await page.waitForFunction(
