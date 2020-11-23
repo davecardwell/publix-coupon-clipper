@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.1.1...v3.2.0) (2020-11-23)
+
+
+### Features
+
+* **deps:** update puppeteer to v5.5.0 ([415b1f1](https://github.com/davecardwell/publix-coupon-clipper/commit/415b1f14dcae8034ab9e588e8091ef83c7baa9d7))
+
 ## [3.1.1](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.1.0...v3.1.1) (2020-10-23)
 
 
