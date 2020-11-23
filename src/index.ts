@@ -182,7 +182,7 @@ async function logInToPublix(
   //
   // [1] https://github.com/GoogleChrome/puppeteer/issues/4733
   await Promise.all([
-    new Promise((resolve, reject): void => {
+    new Promise<void>((resolve, reject): void => {
       let didNavigate = false;
 
       const navigationListener = (): void => {
