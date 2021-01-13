@@ -1,4 +1,4 @@
-import type { Browser, Request, Page } from "puppeteer";
+import type { Browser, ElementHandle, Request, Page } from "puppeteer";
 import type TypedEmitter from "typed-emitter";
 
 import { EventEmitter } from "events";
@@ -100,7 +100,10 @@ function filterRequests(request: Request): void {
     return;
   }
 
-  if (!/(?:^|\.)publix\.com$/.test(url.hostname)) {
+  if (
+    url.hostname !== "cutpcdnwimages.azureedge.net" &&
+    !/(?:^|\.)publix\.com$/.test(url.hostname)
+  ) {
     void request.abort();
     return;
   }
@@ -144,7 +147,8 @@ async function logInToPublix(
 ): Promise<void> {
   events.emit("info", "Logging in to Publix.com");
 
-  const couponUrl = "https://www.publix.com/savings/digital-coupons";
+  const couponUrl =
+    "https://www.publix.com/savings/digital-coupons?sort=Newest";
 
   await page.goto(couponUrl);
 
@@ -162,7 +166,9 @@ async function logInToPublix(
   // Click the login button and wait to navigate to the SSO site
   await Promise.all([
     page.waitForNavigation(),
-    page.waitForSelector("#signInName", { visible: true }),
+    page
+      .waitForSelector("#signInName", { visible: true })
+      .then((handle) => handle.dispose()),
     page.click("a.sign-in-button"),
   ]);
 
@@ -233,24 +239,36 @@ async function logInToPublix(
 async function processCoupons(page: Page): Promise<number> {
   events.emit("info", "Clipping coupons");
 
-  // Click the “Show all” button and wait for them to appear
-  const showAllButtonXPath =
-    "//div[contains(@class, 'card-loader')]//button[contains(., 'Show all')]";
-  const showAllButton = await page.waitForXPath(showAllButtonXPath, {
-    visible: true,
-  });
-  await showAllButton.click();
-  await showAllButton.dispose();
-  await Promise.all([
-    page.waitForXPath(showAllButtonXPath, { hidden: true }),
-    page.waitForSelector(".card.savings .buttons-area button", {
-      visible: true,
-    }),
-  ]);
+  let buttonHandles: ElementHandle[];
+  {
+    const loadMoreButton = await page.waitForXPath(
+      "//div[contains(@class, 'card-loader')]//button[contains(., 'Load More')]",
+      { visible: true },
+    );
 
-  const buttonHandles = await page.$$(
-    ".savings-container .card.savings .buttons-area button:not(.clipped)",
-  );
+    // Keep clicking the “Load More” button until it is removed or the number of
+    // unclipped coupons doesn’t change.
+    let lastUnclippedCount = 0;
+    while (
+      (buttonHandles = await page.$$(
+        ".savings-container .card.savings .buttons-area button:not(.clipped)",
+      )).length !== lastUnclippedCount
+    ) {
+      lastUnclippedCount = buttonHandles.length;
+
+      if ((await loadMoreButton.boundingBox()) === null) {
+        // “Load More” button has been removed
+        break;
+      }
+
+      await Promise.all([
+        loadMoreButton.click(),
+        ...buttonHandles.map((buttonHandle) => buttonHandle.dispose()),
+      ]);
+    }
+
+    await loadMoreButton.dispose();
+  }
 
   events.emit("info", `Found ${buttonHandles.length} coupon(s) to clip`);
 
@@ -263,11 +281,13 @@ async function processCoupons(page: Page): Promise<number> {
     events.emit("info", `Clipping coupon #${couponCount}`);
 
     await buttonHandle.click();
-    await page.waitForFunction(
-      (button: Element): boolean => !button.classList.contains("loading"),
-      { polling: "mutation" },
-      buttonHandle,
-    );
+    await page
+      .waitForFunction(
+        (button: Element): boolean => !button.classList.contains("loading"),
+        { polling: "mutation" },
+        buttonHandle,
+      )
+      .then((handle) => handle.dispose());
 
     const isClipped = await buttonHandle.evaluate((button): boolean =>
       button.classList.contains("clipped"),
