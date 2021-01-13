@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.2.0...v3.2.1) (2021-01-13)
+
+
+### Bug Fixes
+
+* update to work with Publix website changes ([31753ca](https://github.com/davecardwell/publix-coupon-clipper/commit/31753caa601f7315a810f26d33feec882009add7))
+
 # [3.2.0](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.1.1...v3.2.0) (2020-11-23)
 
 
