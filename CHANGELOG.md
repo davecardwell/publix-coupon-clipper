@@ -1,3 +1,20 @@
+# [4.0.0](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.2.1...v4.0.0) (2021-05-25)
+
+
+### chore
+
+* **deps:** update Node.js to 14.17.0 (LTS) ([2ac20c2](https://github.com/davecardwell/publix-coupon-clipper/commit/2ac20c21c8362e718ca2dff36fa451134e1a2548))
+
+
+### Features
+
+* **deps:** update puppeteer to v9.1.1 ([01d256a](https://github.com/davecardwell/publix-coupon-clipper/commit/01d256a25111eefe3e6de524328a3ee6e8c04ce2))
+
+
+### BREAKING CHANGES
+
+* **deps:** Node.js v14 has numerous breaking changes from v10
+
 ## [3.2.1](https://github.com/davecardwell/publix-coupon-clipper/compare/v3.2.0...v3.2.1) (2021-01-13)
 
 
