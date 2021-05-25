@@ -203,20 +203,17 @@ async function logInToPublix(
 
       page
         .waitForSelector(".error", { visible: true })
-        .then(
-          async (elementHandle): Promise<void> => {
-            const formError = await elementHandle.evaluate(
-              (element): string =>
-                element.textContent?.trim() ?? "Unknown error",
-            );
+        .then(async (elementHandle): Promise<void> => {
+          const formError = await elementHandle.evaluate(
+            (element): string => element.textContent?.trim() ?? "Unknown error",
+          );
 
-            await elementHandle.dispose();
+          await elementHandle.dispose();
 
-            page.removeListener("framenavigated", navigationListener);
+          page.removeListener("framenavigated", navigationListener);
 
-            reject(new Error(`Login failed: ${formError}`));
-          },
-        )
+          reject(new Error(`Login failed: ${formError}`));
+        })
         .catch((err): void => {
           /* Ignore errors if we have already navigated */
           if (!didNavigate) {
