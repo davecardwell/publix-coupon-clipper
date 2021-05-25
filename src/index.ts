@@ -1,4 +1,4 @@
-import type { Browser, ElementHandle, Request, Page } from "puppeteer";
+import type { Browser, ElementHandle, HTTPRequest, Page } from "puppeteer";
 import type TypedEmitter from "typed-emitter";
 
 import { EventEmitter } from "events";
@@ -89,10 +89,10 @@ async function createPage(browser: Browser): Promise<Page> {
 }
 
 /**
- * Filter `puppeteer.Request`s so we only complete publix.com and CDN requests,
- * and we only fetch documents, JavaScript, and API requests.
+ * Filter `puppeteer.HTTPRequest`s so we only complete publix.com and CDN
+ * requests, and we only fetch documents, JavaScript, and API requests.
  */
-function filterRequests(request: Request): void {
+function filterRequests(request: HTTPRequest): void {
   const url = new URL(request.url());
 
   if (url.hostname === "cutpstorb2c.blob.core.windows.net") {
@@ -168,7 +168,7 @@ async function logInToPublix(
     page.waitForNavigation(),
     page
       .waitForSelector("#signInName", { visible: true })
-      .then((handle) => handle.dispose()),
+      .then((handle) => handle?.dispose()),
     page.click("a.sign-in-button"),
   ]);
 
@@ -193,7 +193,7 @@ async function logInToPublix(
 
       const navigationListener = (): void => {
         if (page.url() === couponUrl) {
-          page.removeListener("framenavigated", navigationListener);
+          page.off("framenavigated", navigationListener);
           didNavigate = true;
           resolve();
         }
@@ -204,13 +204,18 @@ async function logInToPublix(
       page
         .waitForSelector(".error", { visible: true })
         .then(async (elementHandle): Promise<void> => {
+          if (elementHandle === null) {
+            throw new Error("Handle for `.error` element is null");
+          }
+
           const formError = await elementHandle.evaluate(
-            (element): string => element.textContent?.trim() ?? "Unknown error",
+            (element: Element): string =>
+              element.textContent?.trim() ?? "Unknown error",
           );
 
           await elementHandle.dispose();
 
-          page.removeListener("framenavigated", navigationListener);
+          page.off("framenavigated", navigationListener);
 
           reject(new Error(`Login failed: ${formError}`));
         })
@@ -242,6 +247,10 @@ async function processCoupons(page: Page): Promise<number> {
       "//div[contains(@class, 'card-loader')]//button[contains(., 'Load More')]",
       { visible: true },
     );
+
+    if (loadMoreButton === null) {
+      throw new Error("Handle for “Load More” button element is null");
+    }
 
     // Keep clicking the “Load More” button until it is removed or the number of
     // unclipped coupons doesn’t change.
@@ -286,7 +295,7 @@ async function processCoupons(page: Page): Promise<number> {
       )
       .then((handle) => handle.dispose());
 
-    const isClipped = await buttonHandle.evaluate((button): boolean =>
+    const isClipped = await buttonHandle.evaluate((button: Element): boolean =>
       button.classList.contains("clipped"),
     );
 
