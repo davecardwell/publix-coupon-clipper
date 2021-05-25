@@ -31,12 +31,8 @@
     "watch:node": "wait-on dist/index.js && npm run build:node -- --watch",
     "pretest": "eslint --ignore-path .gitignore --max-warnings 0 --ext js,ts .",
     "test": "exit 0",
-    "release": "npx --no-install semantic-release"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "release": "npx --no-install semantic-release",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "**/*.{js,ts}": [
@@ -64,7 +60,7 @@
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "nodemon": "^2.0.7",
     "prettier": "^2.3.0",
